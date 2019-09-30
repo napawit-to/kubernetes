@@ -1,0 +1,30 @@
+Docker install
+sudo apt update
+sudo apt install -y \
+    apt-transport-https \
+    ca-certificates \
+    curl \
+    software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg |\
+    sudo apt-key add -
+sudo add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+sudo apt update
+sudo apt install docker-ce
+sudo usermod -aG docker ubuntu
+id
+Kubernetes install
+ sudo swapoff -a
+sudo apt update
+sudo apt install -y apt-transport-https
+curl -s \
+    https://packages.cloud.google.com/apt/doc/apt-key.gpg |\
+    sudo apt-key add -
+sudo touch /etc/apt/sources.list.d/kubernetes.list
+echo \
+    "deb http://apt.kubernetes.io/ kubernetes-xenial main" |\
+    sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+sudo apt update
+sudo apt install -y kubeadm
